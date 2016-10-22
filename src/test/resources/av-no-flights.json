@@ -1,0 +1,652 @@
+{
+  "currency": "GBP",
+  "currPrecision": 2,
+  "trips": [
+    {
+      "origin": "STN",
+      "destination": "OPO",
+      "dates": [
+        {
+          "dateOut": "2016-10-22T00:00:00.000",
+          "flights": [
+            {
+              "flightNumber": "FR 8347",
+              "time": [
+                "2016-10-22T20:55:00.000",
+                "2016-10-22T23:20:00.000"
+              ],
+              "timeUTC": [
+                "2016-10-22T19:55:00.000Z",
+                "2016-10-22T22:20:00.000Z"
+              ],
+              "duration": "02:25",
+              "faresLeft": 0,
+              "flightKey": "FR~8347~ ~~STN~10/22/2016 20:55~OPO~10/22/2016 23:20~",
+              "infantsLeft": 16
+            }
+          ]
+        },
+        {
+          "dateOut": "2016-10-23T00:00:00.000",
+          "flights": [
+            {
+              "flightNumber": "FR 8343",
+              "time": [
+                "2016-10-23T09:25:00.000",
+                "2016-10-23T11:50:00.000"
+              ],
+              "timeUTC": [
+                "2016-10-23T08:25:00.000Z",
+                "2016-10-23T10:50:00.000Z"
+              ],
+              "duration": "02:25",
+              "faresLeft": 2,
+              "flightKey": "FR~8343~ ~~STN~10/23/2016 09:25~OPO~10/23/2016 11:50~",
+              "infantsLeft": 13,
+              "regularFare": {
+                "fareKey": "0~F~~F11HIGH~BO11~~2~X",
+                "fareClass": "F",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 155.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 155.9900
+                  }
+                ]
+              },
+              "businessFare": {
+                "fareKey": "0~F~~F11HBUS~BS11~~2~X",
+                "fareClass": "F",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 235.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 235.9900
+                  }
+                ]
+              },
+              "leisureFare": {
+                "fareKey": "0~F~~F11HLSR~BL11~~2~X",
+                "fareClass": "F",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 196.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 196.9900
+                  }
+                ]
+              }
+            },
+            {
+              "flightNumber": "FR 8345",
+              "time": [
+                "2016-10-23T18:30:00.000",
+                "2016-10-23T20:50:00.000"
+              ],
+              "timeUTC": [
+                "2016-10-23T17:30:00.000Z",
+                "2016-10-23T19:50:00.000Z"
+              ],
+              "duration": "02:20",
+              "faresLeft": 3,
+              "flightKey": "FR~8345~ ~~STN~10/23/2016 18:30~OPO~10/23/2016 20:50~",
+              "infantsLeft": 16,
+              "regularFare": {
+                "fareKey": "0~F~~F11HIGH~BO11~~2~X",
+                "fareClass": "F",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 155.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 155.9900
+                  }
+                ]
+              },
+              "businessFare": {
+                "fareKey": "0~F~~F11HBUS~BS11~~2~X",
+                "fareClass": "F",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 235.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 235.9900
+                  }
+                ]
+              },
+              "leisureFare": {
+                "fareKey": "0~F~~F11HLSR~BL11~~2~X",
+                "fareClass": "F",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 196.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 196.9900
+                  }
+                ]
+              }
+            },
+            {
+              "flightNumber": "FR 8347",
+              "time": [
+                "2016-10-23T20:55:00.000",
+                "2016-10-23T23:20:00.000"
+              ],
+              "timeUTC": [
+                "2016-10-23T19:55:00.000Z",
+                "2016-10-23T22:20:00.000Z"
+              ],
+              "duration": "02:25",
+              "faresLeft": 4,
+              "flightKey": "FR~8347~ ~~STN~10/23/2016 20:55~OPO~10/23/2016 23:20~",
+              "infantsLeft": 18,
+              "regularFare": {
+                "fareKey": "0~L~~L11HIGH~BO11~~2~X",
+                "fareClass": "L",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 133.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 133.9900
+                  }
+                ]
+              },
+              "businessFare": {
+                "fareKey": "0~L~~L11HBUS~BS11~~2~X",
+                "fareClass": "L",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 213.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 213.9900
+                  }
+                ]
+              },
+              "leisureFare": {
+                "fareKey": "0~L~~L11HLSR~BL11~~2~X",
+                "fareClass": "L",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 174.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 174.9900
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "dateOut": "2016-10-24T00:00:00.000",
+          "flights": [
+            {
+              "flightNumber": "FR 8343",
+              "time": [
+                "2016-10-24T09:25:00.000",
+                "2016-10-24T11:50:00.000"
+              ],
+              "timeUTC": [
+                "2016-10-24T08:25:00.000Z",
+                "2016-10-24T10:50:00.000Z"
+              ],
+              "duration": "02:25",
+              "faresLeft": 4,
+              "flightKey": "FR~8343~ ~~STN~10/24/2016 09:25~OPO~10/24/2016 11:50~",
+              "infantsLeft": 15,
+              "regularFare": {
+                "fareKey": "0~F~~F11HIGH~BO11~~2~X",
+                "fareClass": "F",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 155.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 155.9900
+                  }
+                ]
+              },
+              "businessFare": {
+                "fareKey": "0~F~~F11HBUS~BS11~~2~X",
+                "fareClass": "F",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 235.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 235.9900
+                  }
+                ]
+              },
+              "leisureFare": {
+                "fareKey": "0~F~~F11HLSR~BL11~~2~X",
+                "fareClass": "F",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 196.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 196.9900
+                  }
+                ]
+              }
+            },
+            {
+              "flightNumber": "FR 8347",
+              "time": [
+                "2016-10-24T20:55:00.000",
+                "2016-10-24T23:20:00.000"
+              ],
+              "timeUTC": [
+                "2016-10-24T19:55:00.000Z",
+                "2016-10-24T22:20:00.000Z"
+              ],
+              "duration": "02:25",
+              "faresLeft": 3,
+              "flightKey": "FR~8347~ ~~STN~10/24/2016 20:55~OPO~10/24/2016 23:20~",
+              "infantsLeft": 17,
+              "regularFare": {
+                "fareKey": "0~F~~F11HIGH~BO11~~2~X",
+                "fareClass": "F",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 155.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 155.9900
+                  }
+                ]
+              },
+              "businessFare": {
+                "fareKey": "0~F~~F11HBUS~BS11~~2~X",
+                "fareClass": "F",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 235.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 235.9900
+                  }
+                ]
+              },
+              "leisureFare": {
+                "fareKey": "0~F~~F11HLSR~BL11~~2~X",
+                "fareClass": "F",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 196.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 196.9900
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "dateOut": "2016-10-25T00:00:00.000",
+          "flights": [
+            {
+              "flightNumber": "FR 8343",
+              "time": [
+                "2016-10-25T09:25:00.000",
+                "2016-10-25T11:50:00.000"
+              ],
+              "timeUTC": [
+                "2016-10-25T08:25:00.000Z",
+                "2016-10-25T10:50:00.000Z"
+              ],
+              "duration": "02:25",
+              "faresLeft": 2,
+              "flightKey": "FR~8343~ ~~STN~10/25/2016 09:25~OPO~10/25/2016 11:50~",
+              "infantsLeft": 17,
+              "regularFare": {
+                "fareKey": "0~E~~EZ11LOW~BO11~~2~X",
+                "fareClass": "E",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 93.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 93.9900
+                  }
+                ]
+              },
+              "businessFare": {
+                "fareKey": "0~E~~E11LBUS~BS11~~2~X",
+                "fareClass": "E",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 173.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 173.9900
+                  }
+                ]
+              },
+              "leisureFare": {
+                "fareKey": "0~E~~E11LLSR~BL11~~2~X",
+                "fareClass": "E",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 134.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 134.9900
+                  }
+                ]
+              }
+            },
+            {
+              "flightNumber": "FR 8347",
+              "time": [
+                "2016-10-25T20:55:00.000",
+                "2016-10-25T23:20:00.000"
+              ],
+              "timeUTC": [
+                "2016-10-25T19:55:00.000Z",
+                "2016-10-25T22:20:00.000Z"
+              ],
+              "duration": "02:25",
+              "faresLeft": 4,
+              "flightKey": "FR~8347~ ~~STN~10/25/2016 20:55~OPO~10/25/2016 23:20~",
+              "infantsLeft": 16,
+              "regularFare": {
+                "fareKey": "0~L~~LZ11LOW~BO11~~2~X",
+                "fareClass": "L",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 110.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 110.9900
+                  }
+                ]
+              },
+              "businessFare": {
+                "fareKey": "0~L~~L11LBUS~BS11~~2~X",
+                "fareClass": "L",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 190.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 190.9900
+                  }
+                ]
+              },
+              "leisureFare": {
+                "fareKey": "0~L~~L11LLSR~BL11~~2~X",
+                "fareClass": "L",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 151.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 151.9900
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "dateOut": "2016-10-26T00:00:00.000",
+          "flights": [
+            {
+              "flightNumber": "FR 8343",
+              "time": [
+                "2016-10-26T09:25:00.000",
+                "2016-10-26T11:50:00.000"
+              ],
+              "timeUTC": [
+                "2016-10-26T08:25:00.000Z",
+                "2016-10-26T10:50:00.000Z"
+              ],
+              "duration": "02:25",
+              "faresLeft": 2,
+              "flightKey": "FR~8343~ ~~STN~10/26/2016 09:25~OPO~10/26/2016 11:50~",
+              "infantsLeft": 14,
+              "regularFare": {
+                "fareKey": "0~L~~LZ11LOW~BO11~~2~X",
+                "fareClass": "L",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 110.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 110.9900
+                  }
+                ]
+              },
+              "businessFare": {
+                "fareKey": "0~L~~L11LBUS~BS11~~2~X",
+                "fareClass": "L",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 190.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 190.9900
+                  }
+                ]
+              },
+              "leisureFare": {
+                "fareKey": "0~L~~L11LLSR~BL11~~2~X",
+                "fareClass": "L",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 151.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 151.9900
+                  }
+                ]
+              }
+            },
+            {
+              "flightNumber": "FR 8347",
+              "time": [
+                "2016-10-26T20:55:00.000",
+                "2016-10-26T23:20:00.000"
+              ],
+              "timeUTC": [
+                "2016-10-26T19:55:00.000Z",
+                "2016-10-26T22:20:00.000Z"
+              ],
+              "duration": "02:25",
+              "faresLeft": 4,
+              "flightKey": "FR~8347~ ~~STN~10/26/2016 20:55~OPO~10/26/2016 23:20~",
+              "infantsLeft": 18,
+              "regularFare": {
+                "fareKey": "0~F~~FZ11LOW~BO11~~2~X",
+                "fareClass": "F",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 129.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 129.9900
+                  }
+                ]
+              },
+              "businessFare": {
+                "fareKey": "0~F~~F11LBUS~BS11~~2~X",
+                "fareClass": "F",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 209.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 209.9900
+                  }
+                ]
+              },
+              "leisureFare": {
+                "fareKey": "0~F~~F11LLSR~BL11~~2~X",
+                "fareClass": "F",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 170.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 170.9900
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "dateOut": "2016-10-27T00:00:00.000",
+          "flights": [
+            {
+              "flightNumber": "FR 8343",
+              "time": [
+                "2016-10-27T09:25:00.000",
+                "2016-10-27T11:50:00.000"
+              ],
+              "timeUTC": [
+                "2016-10-27T08:25:00.000Z",
+                "2016-10-27T10:50:00.000Z"
+              ],
+              "duration": "02:25",
+              "faresLeft": 3,
+              "flightKey": "FR~8343~ ~~STN~10/27/2016 09:25~OPO~10/27/2016 11:50~",
+              "infantsLeft": 17,
+              "regularFare": {
+                "fareKey": "0~E~~EZ11LOW~BO11~~2~X",
+                "fareClass": "E",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 93.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 93.9900
+                  }
+                ]
+              },
+              "businessFare": {
+                "fareKey": "0~E~~E11LBUS~BS11~~2~X",
+                "fareClass": "E",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 173.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 173.9900
+                  }
+                ]
+              },
+              "leisureFare": {
+                "fareKey": "0~E~~E11LLSR~BL11~~2~X",
+                "fareClass": "E",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 134.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 134.9900
+                  }
+                ]
+              }
+            },
+            {
+              "flightNumber": "FR 8347",
+              "time": [
+                "2016-10-27T20:55:00.000",
+                "2016-10-27T23:20:00.000"
+              ],
+              "timeUTC": [
+                "2016-10-27T19:55:00.000Z",
+                "2016-10-27T22:20:00.000Z"
+              ],
+              "duration": "02:25",
+              "faresLeft": 2,
+              "flightKey": "FR~8347~ ~~STN~10/27/2016 20:55~OPO~10/27/2016 23:20~",
+              "infantsLeft": 17,
+              "regularFare": {
+                "fareKey": "0~F~~FZ11LOW~BO11~~2~X",
+                "fareClass": "F",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 129.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 129.9900
+                  }
+                ]
+              },
+              "businessFare": {
+                "fareKey": "0~F~~F11LBUS~BS11~~2~X",
+                "fareClass": "F",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 209.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 209.9900
+                  }
+                ]
+              },
+              "leisureFare": {
+                "fareKey": "0~F~~F11LLSR~BL11~~2~X",
+                "fareClass": "F",
+                "fares": [
+                  {
+                    "type": "ADT",
+                    "amount": 170.9900,
+                    "count": 2,
+                    "hasDiscount": false,
+                    "publishedFare": 170.9900
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "serverTimeUTC": "2016-10-22T14:51:51.715Z"
+}
