@@ -6,8 +6,10 @@ import java.util.Currency
 import spray.client.pipelining._
 import spray.json.{DefaultJsonProtocol, JsBoolean, JsNull, JsNumber, JsObject, JsString, JsValue, RootJsonFormat}
 
+import scala.concurrent.Await
+import scala.language.postfixOps
+
 object RyanairProtocol extends DefaultJsonProtocol with CommonProtocol {
-  // https://desktopapps.ryanair.com/en-gb/availability?ADT=1&CHD=0&DateIn=2016-12-03&DateOut=2016-11-28&Destination=OPO&FlexDaysIn=0&FlexDaysOut=0&INF=0&Origin=STN&RoundTrip=true&TEEN=0
   case class AvFare(_type: String, amount: Double, count: Int, hasDiscount: Boolean, publishedFare: Double)
   case class AvClassedFare(fareClass: String, fares: List[AvFare])
   case class AvFlight(flightNumber: String, time: List[LocalDateTime], faresLeft: Int, regularFare: Option[AvClassedFare])
@@ -38,6 +40,13 @@ object RyanairProtocol extends DefaultJsonProtocol with CommonProtocol {
   implicit val avDateFormat = jsonFormat2(AvDate)
   implicit val tripFormat = jsonFormat3(Trip)
   implicit val avFormat = jsonFormat3(Availability)
+
+  //  https://api.ryanair.com/aggregate/3/common?embedded=airports&market=en-gb
+  case class Coordinates(longitude: Double, latitude: Double)
+  case class Airport(iataCode: String, name: String, coordinates: Coordinates, countryCode: String,
+                     currencyCode: Currency, routes: List[String], priority: Int)
+  implicit val coordinatesFormat = jsonFormat2(Coordinates)
+  implicit val airportFormat = jsonFormat7(Airport)
 }
 
 trait Ryanair extends Sys {
@@ -46,11 +55,32 @@ trait Ryanair extends Sys {
   import spray.httpx.SprayJsonSupport._
 
   private val logger = createLogger
-  private val pipeline = sendReceive ~> unmarshal[Availability]
+  private val avPipe = sendReceive ~> unmarshal[Availability]
+  private lazy val airportCache = {
+    import concurrent.duration._
+    def cleanRoutes(in: Airport) = in.copy(routes = in.routes.filter(_.startsWith("airport:")).map(_.substring(8)))
+    case class APCache(airports: List[Airport])
+    implicit val apcFormat = jsonFormat1(APCache)
+    val avPipe = sendReceive ~> unmarshal[APCache]
+    val ftr = avPipe(Get("https://api.ryanair.com/aggregate/3/common?embedded=airports&market=en-gb"))
+      .map(_.airports.map(cleanRoutes).map(a => a.iataCode -> a).toMap)
+    Await.result(ftr, 10 seconds)
+  }
+
+  def airport(iata: String): Option[Airport] = airportCache.get(iata)
+
+  def canFly(from: String): String => Boolean = {
+    val fx = airport(from).map(_.routes.toSet) match {
+      case Some(routes) => routes
+      case None => Set.empty[String]
+    }
+
+    fx.contains
+  }
 
   def availability(origin: String, destination: String, date: LocalDate, flex: Int = 0, adults: Int = 2) = {
     val query = s"Origin=$origin&Destination=$destination&ADT=$adults&DateOut=$date&FlexDaysOut=$flex"
-    logger.info(s"GET with query: $query")
-    pipeline(Get(s"https://desktopapps.ryanair.com/en-gb/availability?$query"))
+    logger.debug(s"GET with query: $query")
+    avPipe(Get(s"https://desktopapps.ryanair.com/en-gb/availability?$query"))
   }
 }

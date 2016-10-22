@@ -13,4 +13,35 @@ class RyanairTest extends TestBase with Ryanair {
       }
     }
   }
+
+  "Ryanair airport" should {
+    "return information about STN airport" in {
+      val r = airport("STN").get
+      r.iataCode shouldBe "STN"
+      r.name shouldBe "London Stansted"
+    }
+    "contain only airports available in the repository" in {
+      val r = airport("STN").get
+      r.routes should not be empty
+      r.routes.map(airport).forall(_.isDefined)
+    }
+  }
+
+  "Ryanair canFly" should {
+    "return true for STN to ORK" in {
+      canFly("STN")("ORK") shouldBe true
+    }
+    "return false for any destination if origin doesn't exit" in {
+      canFly("XXX")("STN") shouldBe false
+    }
+    "return false for any origin if destination doesn't exit" in {
+      canFly("STN")("XXX") shouldBe false
+    }
+    "work with partial functions" in {
+      val fromSTNto = canFly("STN")
+      fromSTNto("XXX") shouldBe false
+      fromSTNto("ORK") shouldBe true
+      fromSTNto("OPO") shouldBe true
+    }
+  }
 }

@@ -7,7 +7,7 @@ class RyanairProtocol$Test extends TestBase {
   import spray.json._
   import RyanairProtocol._
 
-  "Protocol's availability" should {
+  "Availability" should {
     "parse example json file without failing and yield currency as GBP" in {
       val json = src("/availability.json").mkString("").parseJson
       val av = json.convertTo[Availability]
@@ -16,6 +16,15 @@ class RyanairProtocol$Test extends TestBase {
     "parse json file with missing fares" in {
       val json = src("/av-no-flights.json").mkString("").parseJson
       json.convertTo[Availability]
+    }
+  }
+
+  "Airport" should {
+    "parse example json file without failing" in {
+      val json = src("/dta.json").mkString("").parseJson
+      val aps = json.asJsObject.fields("airports").convertTo[List[Airport]]
+      aps should not be empty
+      aps.head.iataCode shouldBe "PMF"
     }
   }
 }
