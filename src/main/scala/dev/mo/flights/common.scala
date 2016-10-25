@@ -12,14 +12,12 @@ import spray.json.{DefaultJsonProtocol, JsString, JsValue, RootJsonFormat}
 import scala.concurrent.ExecutionContext
 
 trait Sys {
-  //  val config = new Config {}
   implicit def system: ActorSystem
   implicit def executor: ExecutionContext = system.dispatcher
-  //  implicit def materializer: Materializer
   def createLogger = Logging.getLogger(system, this)
 }
 
-class SysProvider(implicit val system: ActorSystem, val materializer: Materializer) extends Sys
+class SysProvider(implicit val system: ActorSystem) extends Sys
 
 trait CommonProtocol extends DefaultJsonProtocol {
   private def str[T](json: JsValue, conv: String => T): T = json match {

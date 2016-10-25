@@ -55,7 +55,9 @@ trait Ryanair extends Sys {
   import spray.httpx.SprayJsonSupport._
 
   private val logger = createLogger
-  private val avPipe = sendReceive ~> unmarshal[Availability]
+  private val avPipe = logRequest(req => logger.debug(s"${req.method} ${req.uri}")) ~>
+    sendReceive ~> unmarshal[Availability]
+
   private lazy val airportCache = {
     import concurrent.duration._
     def cleanRoutes(in: Airport) = in.copy(routes = in.routes.filter(_.startsWith("airport:")).map(_.substring(8)))
@@ -79,8 +81,8 @@ trait Ryanair extends Sys {
   }
 
   def availability(origin: String, destination: String, date: LocalDate, flex: Int = 0, adults: Int = 2) = {
-    val query = s"Origin=$origin&Destination=$destination&ADT=$adults&DateOut=$date&FlexDaysOut=$flex"
-    logger.debug(s"GET with query: $query")
-    avPipe(Get(s"https://desktopapps.ryanair.com/en-gb/availability?$query"))
+    val query = s"Origin=$origin&Destination=$destination&ADT=$adults&DateOut=$date&DateIn=$date&FlexDaysOut=$flex&FlexDaysIn=$flex"
+    val uri = s"https://desktopapps.ryanair.com/en-gb/availability?$query&RoundTrip=true"
+    avPipe(Get(uri))
   }
 }

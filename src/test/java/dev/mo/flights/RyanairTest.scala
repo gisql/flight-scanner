@@ -6,10 +6,23 @@ class RyanairTest extends TestBase with Ryanair {
   "Ryanair availability" should {
     "return result with at least one flight from STN to OPO for next 5 days" in {
       whenReady(availability("STN", "OPO", LocalDate.now(), 5)) { av =>
-        val trip = av.trips.last
+        val trip = av.trips.head
         trip.dates should not be empty
         trip.origin shouldBe "STN"
         trip.destination shouldBe "OPO"
+      }
+    }
+
+    "return result 2 results: there and back" in {
+      whenReady(availability("STN", "OPO", LocalDate.now(), 5)) { av =>
+        av.trips.size shouldBe 2
+        val there = av.trips.head
+        val back = av.trips.last
+        there.origin shouldBe "STN"
+        there.destination shouldBe "OPO"
+
+        back.origin shouldBe "OPO"
+        back.destination shouldBe "STN"
       }
     }
   }
