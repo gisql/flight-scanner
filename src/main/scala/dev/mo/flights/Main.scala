@@ -25,7 +25,7 @@ object Main extends App with Scanner {
   */
 
   def fire(w: Int) = oneDayTrips(LocalDate.of(2017, 3, 3).plus(w, ChronoUnit.WEEKS),
-    "SZG", "PFO", "PRG", "SXF", "BRE", "ATH", "KGS", "RHO", "BUD",
+    "STN", "SZG", "PFO", "PRG", "SXF", "BRE", "ATH", "KGS", "RHO", "BUD",
     "GOA", "BLQ", "PSA", "FCO", "CIA", "VCE", "VRN", "LUX", "MLA", "EIN", "RYG", "TRF", "OSL", "GDN",
     "LIS", "IBZ", "MAD", "AGP", "PMI", "SVQ", "VLC", "NYO", "EDI").map(trips =>
     trips.sortBy(_.price).foreach(t =>
@@ -42,9 +42,9 @@ object Main extends App with Scanner {
       }
   }
 
-  retry(5, fire(0)) onComplete {
-    _ =>
-      println("terminating...")
+  retry(5, fire(2)) onComplete {
+    e =>
+      println("terminating...", e)
       system.terminate()
   }
 }
