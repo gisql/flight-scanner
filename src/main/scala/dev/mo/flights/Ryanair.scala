@@ -4,10 +4,12 @@ import java.time.{LocalDate, LocalDateTime}
 import java.util.Currency
 
 import spray.client.pipelining._
+import spray.http.HttpRequest
 import spray.json.{DefaultJsonProtocol, JsBoolean, JsNull, JsNumber, JsObject, JsString, JsValue, RootJsonFormat}
 
-import scala.concurrent.Await
+import scala.concurrent.{Await, Future}
 import scala.language.postfixOps
+import scala.util.{Success, Try}
 
 object RyanairProtocol extends DefaultJsonProtocol with CommonProtocol {
   case class AvFare(_type: String, amount: Double, count: Int, hasDiscount: Boolean, publishedFare: Double)
@@ -55,17 +57,19 @@ trait Ryanair extends Sys {
   import spray.httpx.SprayJsonSupport._
 
   private val logger = createLogger
-  private val avPipe = logRequest(req => logger.debug(s"${req.method} ${req.uri}")) ~>
-    sendReceive ~> unmarshal[Availability]
+  private val avPipe = sendReceive ~> unmarshal[Availability]
 
-  private lazy val airportCache = {
+  private lazy val airportCache: Map[String, Airport] = {
     import concurrent.duration._
     def cleanRoutes(in: Airport) = in.copy(routes = in.routes.filter(_.startsWith("airport:")).map(_.substring(8)))
-    case class APCache(airports: List[Airport])
-    implicit val apcFormat = jsonFormat1(APCache)
-    val avPipe = sendReceive ~> unmarshal[APCache]
-    val ftr = avPipe(Get("https://api.ryanair.com/aggregate/3/common?embedded=airports&market=en-gb"))
-      .map(_.airports.map(cleanRoutes).map(a => a.iataCode -> a).toMap)
+
+    val airportPipe = sendReceive ~> unmarshal[Map[String, List[JsValue]]]
+    val ftr = airportPipe(Get("https://api.ryanair.com/aggregate/3/common?embedded=airports&market=en-gb")) map { res =>
+      val rv = res("airports").map(a => Try(a.convertTo[Airport])) collect {
+        case Success(a) => a.iataCode -> cleanRoutes(a)
+      }
+      rv.toMap
+    }
     Await.result(ftr, 10 seconds)
   }
 
@@ -80,9 +84,23 @@ trait Ryanair extends Sys {
     fx.contains
   }
 
-  def availability(origin: String, destination: String, date: LocalDate, flex: Int = 0, adults: Int = 2) = {
+  //curl 'https://desktopapps.ryanair.com/v4/en-ie/availability?
+  // &CHD=0&INF=0&TEEN=0&IncludeConnectingFlights=true&RoundTrip=true&ToUs=AGREED&exists=false&promoCode=
+  // ADT=1&DateIn=2018-04-12&DateOut=2018-04-12&Destination=WMI&FlexDaysIn=6&FlexDaysOut=4&Origin=STN'
+
+  def availability(origin: String, destination: String, date: LocalDate, flex: Int = 0, adults: Int = 2): Future[Availability] = {
     val query = s"Origin=$origin&Destination=$destination&ADT=$adults&DateOut=$date&DateIn=$date&FlexDaysOut=$flex&FlexDaysIn=$flex"
-    val uri = s"https://desktopapps.ryanair.com/en-gb/availability?$query&RoundTrip=true"
+    val uri = s"https://desktopapps.ryanair.com/v4/en-ie/availability?$query&CHD=0&INF=0&TEEN=0&IncludeConnectingFlights=true&RoundTrip=true&ToUs=AGREED&exists=false&promoCode="
     avPipe(Get(uri))
+    //    println(uri)
+    //    ???
+  }
+
+  def printTripsFrom(origin: String): Unit = {
+    println(s"ITA,Country,City,Longitude,Latitude")
+    airportCache(origin).routes.map(airportCache).sortBy(x => (x.countryCode, x.name)) foreach {
+      case Airport(ita, name, c, cc, _, _, _) =>
+        println(s"$ita,$cc,$name,${c.longitude},${c.latitude}")
+    }
   }
 }
